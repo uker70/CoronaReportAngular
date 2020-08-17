@@ -1,0 +1,26 @@
+progress,          /* All HTML5 progress enabled browsers */
+progress[role]     /* polyfill */
+{
+	-webkit-appearance: none;
+	width: 60%;
+	height: 20px;
+}
+
+/* Polyfill */
+progress[role]:after {
+	background-image: none; /* removes default background from polyfill */
+}
+
+/* Ensure fallback text doesn't appear in polyfill */
+progress[role] strong {
+	display: none;
+}
+
+/* Chrome */
+progress::-webkit-progress-bar {
+    background: #ffeeee;
+}
+
+progress::-webkit-progress-value {
+    background: black;
+}
