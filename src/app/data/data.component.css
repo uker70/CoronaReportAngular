@@ -6,6 +6,10 @@ progress[role]     /* polyfill */
 	height: 20px;
 }
 
+progress{
+	padding-top: 1px;
+}
+
 /* Polyfill */
 progress[role]:after {
 	background-image: none; /* removes default background from polyfill */
@@ -21,6 +25,32 @@ progress::-webkit-progress-bar {
     background: #ffeeee;
 }
 
-progress::-webkit-progress-value {
-    background: black;
+.deathRed::-webkit-progress-value {
+    background: red;
 }
+
+.criticalDarkRed::-webkit-progress-value {
+    background: rgb(184, 23, 55);
+}
+
+.recoveredGreen::-webkit-progress-value {
+    background: lime;
+}
+
+.activeYellow::-webkit-progress-value {
+    background: yellow;
+}
+
+.casesDonePurple::-webkit-progress-value {
+    background: purple;
+}
+
+.centerDiv{
+	margin: 0 auto;
+	position: relative;
+}
+
+
+/*
+lav metode til at finde maks 
+*/

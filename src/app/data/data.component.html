@@ -1,7 +1,13 @@
 <div>
-    <h1>Country</h1>
-    <div>
-        <progress value="50" max="100">32%</progress>
+    <div *ngFor="let data of coronaData" class="centerDiv">
+        {{data.country}}
+        <div>
+            <progress class="deathRed" value="{{data.deaths}}" max="{{data.cases}}"></progress>
+            <progress class="criticalDarkRed" value="{{data.critical}}" max="{{data.deaths}}"></progress>
+            <progress class="activeYellow" value="{{data.active}}" max="{{data.cases}}"></progress>
+            <progress class="recoveredGreen" value="{{data.recovered}}" max="{{data.cases}}"></progress>
+            <progress class="casesDonePurple" value="{{combineNumbers(data.deaths, data.recovered)}}" max="{{data.cases}}"></progress>
+        </div>
     </div>
 </div>
-<google-map></google-map>
+<!-- <google-map></google-map> -->
