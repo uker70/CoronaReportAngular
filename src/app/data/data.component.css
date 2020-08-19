@@ -50,6 +50,19 @@ progress::-webkit-progress-bar {
 	position: relative;
 }
 
+.chart {
+	background: 
+	  conic-gradient(
+		  yellow var(--chart-active),
+		  red 0 var(--chart-death),
+		  lime 0 var(--chart-recovered),
+		  grey 0
+	  );
+	border-radius: 50%;
+	width: 10%;
+	padding-top: 10%;
+	float: right;
+}
 
 /*
 lav metode til at finde maks 

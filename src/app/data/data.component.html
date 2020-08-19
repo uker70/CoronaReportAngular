@@ -1,13 +1,42 @@
 <div>
+    <input #inputString (keyup)="searchCountry(inputString.value)">
+</div>
+<div *ngIf="searchWord == '' || searchWord == null; else showSearch">
+    <div>
+        <div *ngFor="let data of coronaData" class="centerDiv">
+            <div>
+            {{data.country}}
+            <div>
+                <progress class="deathRed" value="{{data.deaths}}" max="{{data.cases}}"></progress>
+                <progress class="criticalDarkRed" value="{{data.critical}}" max="{{data.active}}"></progress>
+                <progress class="activeYellow" value="{{data.active}}" max="{{data.cases}}"></progress>
+                <progress class="recoveredGreen" value="{{data.recovered}}" max="{{data.cases}}"></progress>
+                <progress class="casesDonePurple" value="{{combineNumbers(data.deaths, data.recovered)}}" max="{{data.cases}}"></progress>
+            </div>
+            <div class="chart"></div>
+        </div>
+        </div>
+    </div>
+</div>
+<ng-template #showSearch>
+<div>
     <div *ngFor="let data of coronaData" class="centerDiv">
+
+        <div *ngIf="data.country.toLowerCase().includes(searchWord)">
         {{data.country}}
         <div>
             <progress class="deathRed" value="{{data.deaths}}" max="{{data.cases}}"></progress>
-            <progress class="criticalDarkRed" value="{{data.critical}}" max="{{data.deaths}}"></progress>
+            <progress class="criticalDarkRed" value="{{data.critical}}" max="{{data.active}}"></progress>
             <progress class="activeYellow" value="{{data.active}}" max="{{data.cases}}"></progress>
             <progress class="recoveredGreen" value="{{data.recovered}}" max="{{data.cases}}"></progress>
             <progress class="casesDonePurple" value="{{combineNumbers(data.deaths, data.recovered)}}" max="{{data.cases}}"></progress>
         </div>
+        <div class="chart" [onChange]></div>
+    </div>
     </div>
 </div>
+</ng-template>
+<!-- <div id="kakao">
+    <button (click)="changeColor({{data[1].cases}}, {{data[1].deaths}})">Browninator</button>
+</div> -->
 <!-- <google-map></google-map> -->

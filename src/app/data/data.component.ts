@@ -20,6 +20,7 @@ export class DataComponent implements OnInit {
     minZoom: 8,
   }
 
+  public searchWord = '';
   coronaData: Country[] = [];
   mapsData: MapsData[] = [];
 
@@ -27,6 +28,27 @@ export class DataComponent implements OnInit {
 
   combineNumbers(a: number, b: number){
     return (a + b);
+  }
+
+  chart = document.querySelector('chart');
+
+  chart.addEventListener({
+
+  });
+
+//   background: 
+//   conic-gradient(
+//     yellow 10%,
+//     red 0
+//   );
+// border-radius: 50%;
+// width: 10%;
+// padding-top: 10%;
+// float: right;
+
+  searchCountry(input: string) {
+    let temp = input;
+    this.searchWord = temp.toLowerCase();
   }
   
   ngOnInit() {
