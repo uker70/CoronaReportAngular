@@ -10,17 +10,13 @@ progress{
 	padding-top: 1px;
 }
 
-/* Polyfill */
-progress[role]:after {
-	background-image: none; /* removes default background from polyfill */
-}
+progress::after {
+	content: attr(data-label);
+	font-size: 0.8em;
+	text-align: center!important;
+	display: inline-block;
+  }
 
-/* Ensure fallback text doesn't appear in polyfill */
-progress[role] strong {
-	display: none;
-}
-
-/* Chrome */
 progress::-webkit-progress-bar {
     background: lightgray;
 }

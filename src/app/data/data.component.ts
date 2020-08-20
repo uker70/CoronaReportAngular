@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { Country } from './country';
-import { MapsData } from "./maps.data";
 
 @Component({
   selector: 'app-data',
