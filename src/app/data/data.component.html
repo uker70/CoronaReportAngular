@@ -1,40 +1,55 @@
-<div>
-    <input #inputString (keyup)="searchCountry(inputString.value)">
+<div class="centerTitleSearchbox">
+    <h1>Corona i Verden</h1>
+    <input (keydown.enter)="searchCountry(inputString.value)" onfocus="this.value=''" (click)="clearSearch()" 
+    class="searchboxTop" placeholder="Search for a country" type="text" #inputString id="searchbox">
+    <p>Click Enter to Search</p>
 </div>
 <div *ngIf="searchWord == '' || searchWord == null; else showSearch">
-    <div>
-        <div *ngFor="let data of coronaData" class="centerDiv">
-            <div>
-            {{data.country}}
-            <div>
-                <progress class="deathRed" value="{{data.deaths}}" max="{{data.cases}}"></progress>
-                <progress class="criticalDarkRed" value="{{data.critical}}" max="{{data.active}}"></progress>
-                <progress class="activeYellow" value="{{data.active}}" max="{{data.cases}}"></progress>
-                <progress class="recoveredGreen" value="{{data.recovered}}" max="{{data.cases}}"></progress>
-                <progress class="casesDonePurple" value="{{combineNumbers(data.deaths, data.recovered)}}" max="{{data.cases}}"></progress>
+    <div class="gridRow">
+        <div class="gridColumn">
+            <div *ngFor="let data of coronaData">
+                <div class="backgroundBoxColor">
+                    <h1>{{data.country}}</h1>
+                    <div class="centerBoxBar">
+                        Recovered
+                        <progress class="recoveredGreen" value="{{data.recovered}}" max="{{data.cases}}"></progress>
+                        Deaths
+                        <progress class="deathRed" value="{{data.deaths}}" max="{{data.cases}}"></progress>
+                        Total cases done
+                        <progress class="casesDonePurple" value="{{combineNumbers(data.deaths, data.recovered)}}" max="{{data.cases}}"></progress>
+                        Active cases
+                        <progress class="activeYellow" value="{{data.active}}" max="{{data.cases}}"></progress>
+                        Active cases in Critical state
+                        <progress class="criticalDarkRed" value="{{data.critical}}" max="{{data.active}}"></progress>
+                    </div>
+                </div>
             </div>
-            <div class="chart"></div>
-        </div>
         </div>
     </div>
 </div>
-<ng-template #showSearch>
-<div>
-    <div *ngFor="let data of coronaData" class="centerDiv">
 
-        <div *ngIf="data.country.toLowerCase().includes(searchWord)">
-        {{data.country}}
-        <div>
-            <progress class="deathRed" value="{{data.deaths}}" max="{{data.cases}}"></progress>
-            <progress class="criticalDarkRed" value="{{data.critical}}" max="{{data.active}}"></progress>
-            <progress class="activeYellow" value="{{data.active}}" max="{{data.cases}}"></progress>
-            <progress class="recoveredGreen" value="{{data.recovered}}" max="{{data.cases}}"></progress>
-            <progress class="casesDonePurple" value="{{combineNumbers(data.deaths, data.recovered)}}" max="{{data.cases}}"></progress>
+<ng-template #showSearch>
+    <div class="gridRow">
+        <div class="gridColumn">
+            <div *ngFor="let data of searchedCoronaData">
+                <div class="backgroundBoxColor">
+                    <h1>{{data.country}}</h1>
+                    <div class="centerBoxBar">
+                        Recovered
+                        <progress class="recoveredGreen" value="{{data.recovered}}" max="{{data.cases}}"></progress>
+                        Deaths
+                        <progress class="deathRed" value="{{data.deaths}}" max="{{data.cases}}"></progress>
+                        Total cases done
+                        <progress class="casesDonePurple" value="{{combineNumbers(data.deaths, data.recovered)}}" max="{{data.cases}}"></progress>
+                        Active cases
+                        <progress class="activeYellow" value="{{data.active}}" max="{{data.cases}}"></progress>
+                        Active cases in Critical state
+                        <progress class="criticalDarkRed" value="{{data.critical}}" max="{{data.active}}"></progress>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="chart" [onChange]></div>
     </div>
-    </div>
-</div>
 </ng-template>
 <!-- <div id="kakao">
     <button (click)="changeColor({{data[1].cases}}, {{data[1].deaths}})">Browninator</button>

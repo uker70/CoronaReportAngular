@@ -2,7 +2,7 @@ progress,          /* All HTML5 progress enabled browsers */
 progress[role]     /* polyfill */
 {
 	-webkit-appearance: none;
-	width: 60%;
+	width: 98%;
 	height: 20px;
 }
 
@@ -22,7 +22,7 @@ progress[role] strong {
 
 /* Chrome */
 progress::-webkit-progress-bar {
-    background: #ffeeee;
+    background: lightgray;
 }
 
 .deathRed::-webkit-progress-value {
@@ -45,25 +45,39 @@ progress::-webkit-progress-bar {
     background: purple;
 }
 
-.centerDiv{
-	margin: 0 auto;
-	position: relative;
+.centerBoxBar{
+	margin-left: 1%;
 }
 
-.chart {
-	background: 
-	  conic-gradient(
-		  yellow var(--chart-active),
-		  red 0 var(--chart-death),
-		  lime 0 var(--chart-recovered),
-		  grey 0
-	  );
-	border-radius: 50%;
-	width: 10%;
-	padding-top: 10%;
-	float: right;
+.gridRow{
+    display: grid;
+    grid-template-rows: 0.2%;
 }
 
-/*
-lav metode til at finde maks 
-*/
+.gridColumn{
+    display: grid;
+    grid-template-columns: repeat(3, 3fr);
+	grid-gap: 1.5%;
+}
+
+.backgroundBoxColor{
+	background-color: cadetblue;
+	border-style: outset;
+	margin-top: 4%;
+	margin-bottom: 4%;
+}
+
+.centerTitleSearchbox {
+	text-align: center;
+	margin-bottom: 1%;
+}
+
+.searchboxTop {
+	width: 20%;
+	font-size: medium;
+
+}
+
+input {
+	text-align: center;
+}

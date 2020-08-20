@@ -9,20 +9,9 @@ import { MapsData } from "./maps.data";
   styleUrls: ['./data.component.css']
 })
 export class DataComponent implements OnInit {
-  zoom = 12
-  options: google.maps.MapOptions = {
-    center: {lat: 56.2310271, lng: 10.1870639},
-    mapTypeId: 'hybrid',
-    zoomControl: false,
-    scrollwheel: true,
-    disableDoubleClickZoom: true,
-    maxZoom: 15,
-    minZoom: 8,
-  }
-
   public searchWord = '';
   coronaData: Country[] = [];
-  mapsData: MapsData[] = [];
+  searchedCoronaData: Country[] = [];
 
   constructor(private http: HttpService) { }
 
@@ -30,25 +19,20 @@ export class DataComponent implements OnInit {
     return (a + b);
   }
 
-  chart = document.querySelector('chart');
-
-  chart.addEventListener({
-
-  });
-
-//   background: 
-//   conic-gradient(
-//     yellow 10%,
-//     red 0
-//   );
-// border-radius: 50%;
-// width: 10%;
-// padding-top: 10%;
-// float: right;
-
   searchCountry(input: string) {
-    let temp = input;
-    this.searchWord = temp.toLowerCase();
+    this.searchedCoronaData = [];
+    this.searchWord = input.toLowerCase();
+    this.coronaData.forEach(c => {
+      if(c.country.toLowerCase().includes(input))
+      {
+        this.searchedCoronaData.push(c);
+      }
+    });
+  }
+
+  clearSearch() {
+    this.searchWord = "";
+    this.searchedCoronaData = [];
   }
   
   ngOnInit() {
